@@ -3,24 +3,24 @@ const purchaseDate = document.querySelector("#date");
 const purchasePrice = document.querySelector("#amount");
 const addBtn = document.querySelector("#add");
 const table = document.querySelector(".added_expenses");
-const totalAmount = document.querySelector("#summary");
+const totalCol = document.querySelector("#total");
+const noExpenses = document.querySelector("#no-expenses");
+// const tbody = document.querySelector("tbody");
+console.log(totalCol.value);
 let summary = [];
 let sum = 0;
-// console.log(parseInt(purchasePrice.value));
 
 function addExpense(e) {
 	e.preventDefault(); // keep page from refreshing
+
+	//create an array to store all amounts to be used to calculate total amount
+	summary.push(parseFloat(purchasePrice.value));
+	sum = summary.reduce((acc, val) => acc + val, 0).toFixed(2);
 
 	//collect data entered by user
 	let name = document.createTextNode(expenseName.value);
 	let date = document.createTextNode(purchaseDate.value);
 	let amount = document.createTextNode(purchasePrice.value);
-	// console.log(parseInt(amount));
-
-	//create an array to store all amounts to be used to calculate total amount
-	// summary.push(amount);
-	// sum = summary.reduce((acc, val) => acc + val, 0);
-	// console.log(sum);
 
 	//create table row
 	let tableRow = document.createElement("tr");
@@ -40,10 +40,12 @@ function addExpense(e) {
 
 	//append the table row to the table
 	table.appendChild(tableRow);
+	totalCol.innerHTML = sum;
 
 	expenseName.value = "";
 	purchaseDate.value = "";
 	purchasePrice.value = "";
+	noExpenses.hidden = true;
 }
 
 addBtn.addEventListener("click", addExpense);
