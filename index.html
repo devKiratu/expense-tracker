@@ -7,43 +7,50 @@
 		<title>Expense Tracker</title>
 	</head>
 	<body>
-		<h1>Expense Tracker</h1>
-		<h2>Add a new item below</h2>
-		<form>
-			<label for="name">
-				Item name:
-				<input type="text" id="name" />
-			</label>
-			<label for="date">
-				Purchase date:
-				<input type="date" name="date" id="date" />
-			</label>
-			<label for="amount">
-				Amount:
-				<input type="number" name="amount" id="amount" />
-			</label>
-			<button id="add">Add Expense</button>
-		</form>
-		<table>
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Date</th>
-					<th>Amount (KES)</th>
-				</tr>
-			</thead>
-			<tbody class="added_expenses">
-				<tr id="no-expenses">
-					<td colspan="3">No expenses yet!</td>
-				</tr>
-			</tbody>
-			<tfoot>
-				<tr id="summary">
-					<th colspan="2">Total Spent</th>
-					<th id="total"></th>
-				</tr>
-			</tfoot>
-		</table>
-		<script src="./index.js"></script>
+		<section>
+			<header>
+				<h1>Expense Tracker</h1>
+				<h2>Add a new item below</h2>
+			</header>
+			<form>
+				<div>
+					<label for="name">Item name: </label>
+					<input type="text" id="name" />
+				</div>
+				<div>
+					<label for="date">Purchase date: </label>
+					<input type="date" name="date" id="date" />
+				</div>
+				<div>
+					<label for="amount">Amount(KES): </label>
+					<input type="number" name="amount" id="amount" />
+				</div>
+				<div>
+					<button id="add">Add Expense</button>
+					<button>Clear List</button>
+				</div>
+			</form>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Date</th>
+						<th>Amount (KES)</th>
+					</tr>
+				</thead>
+				<tbody class="added_expenses">
+					<tr id="no-expenses">
+						<td colspan="3">No expenses yet!</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr id="summary">
+						<th colspan="2">Total Spent</th>
+						<th id="total"></th>
+					</tr>
+				</tfoot>
+			</table>
+			<script src="./index.js"></script>
+		</section>
 	</body>
 </html>

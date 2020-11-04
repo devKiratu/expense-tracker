@@ -32,6 +32,10 @@ function addExpense(e) {
 	dateCol.appendChild(date);
 	let amountCol = document.createElement("td");
 	amountCol.appendChild(amount);
+	let removeBtn = document.createElement("button");
+	removeBtn.setAttribute("id", "remove");
+	removeBtn.innerHTML = "❌";
+	amountCol.appendChild(removeBtn);
 
 	//append table data elements to the table row
 	tableRow.appendChild(nameCol);
@@ -46,6 +50,11 @@ function addExpense(e) {
 	purchaseDate.value = "";
 	purchasePrice.value = "";
 	noExpenses.hidden = true;
+
+	removeBtn.addEventListener("click", (e) => {
+		e.preventDefault();
+		table.removeChild(tableRow);
+	});
 }
 
 addBtn.addEventListener("click", addExpense);

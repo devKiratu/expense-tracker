@@ -6,53 +6,68 @@
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	margin: auto;
-	width: 60vw;
 	text-align: center;
-	border: 1px solid black;
+	margin: 0 auto;
+	width: 60vw;
+	/* height: 100vh; */
+	/* border: 1px solid black; */
+	background: #909cc2;
 }
 
+section {
+	background: #ffebcd;
+}
+
+/*-----Header section-----------*/
+
+header {
+	text-align: center;
+	/* margin: 20px; */
+	/* padding: 10px; */
+}
+
+h1 {
+	padding: 5px;
+	margin-top: 0;
+}
+
+/*----Form section -------------*/
+
 form {
-	padding: 10px;
-	margin: 10px;
-	display: flex;
-	flex-direction: column;
-	/* align-items: flex-start; */
-	/* justify-content: space-between;  */
+	margin: 0 auto;
+	width: 50%;
+	border: 1px solid #999;
+	border-radius: 5px;
+}
+
+label {
+	display: inline-block;
+	width: 120px;
+	text-align: left;
 }
 
 input {
-	/* width: 50%; */
-	align-items: center;
-	justify-content: left;
-	padding: 10px;
-}
-input#name {
-	width: 30%;
+	width: 300px;
 	margin: 10px;
-}
-input#date {
-	width: 25%;
-	margin: 0 10px;
-}
-
-input#amount {
-	width: 25%;
-	margin: 0 10px;
-	align-self: flex-start;
+	padding: 5px;
+	box-sizing: border-box;
+	border: 1px solid #999;
+	border-radius: 5px;
 }
 
-form > label {
-	margin: 5px;
+button {
+	margin: 10px;
 	padding: 10px;
+	border: 1px solid #999;
+	border-radius: 5px;
 }
 
+/*----Table section------------*/
 table {
 	border-collapse: collapse;
 	text-align: center;
 	display: inline-block;
-	align-content: center;
-	margin: auto;
+	margin: 20px;
 }
 
 tr,
@@ -61,16 +76,9 @@ th {
 	width: 15rem;
 	height: auto;
 	border: 1px solid black;
-	padding: 20px;
+	padding: 10px;
 }
 
-button {
-	/* display: inline-block; */
-	/* align-items: center; */
-	/* width: max-content; */
-	padding: 10px;
-	margin: 50px;
-}
 thead,
 tfoot {
 	background-color: darkgray;
@@ -81,4 +89,9 @@ tbody tr:nth-child(odd) {
 
 tbody tr:nth-child(even) {
 	background-color: beige;
+}
+
+#remove {
+	padding: 0;
+	/* margin-left: 100px; */
 }
