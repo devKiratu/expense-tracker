@@ -15,15 +15,25 @@
 			<form>
 				<div>
 					<label for="name">Item name: </label>
-					<input type="text" id="name" />
+					<input type="text" id="name" title="What did you buy?" />
 				</div>
 				<div>
 					<label for="date">Purchase date: </label>
-					<input type="date" name="date" id="date" />
+					<input
+						type="date"
+						name="date"
+						id="date"
+						title="When did you make the purchase?"
+					/>
 				</div>
 				<div>
 					<label for="amount">Amount(KES): </label>
-					<input type="number" name="amount" id="amount" />
+					<input
+						type="text"
+						name="amount"
+						id="amount"
+						title="How much did you spend on it?"
+					/>
 				</div>
 				<div>
 					<button id="add">Add Expense</button>
@@ -36,17 +46,18 @@
 						<th>Name</th>
 						<th>Date</th>
 						<th>Amount (KES)</th>
+						<th>Edit</th>
 					</tr>
 				</thead>
 				<tbody class="added_expenses">
 					<tr id="no-expenses">
-						<td colspan="3">No expenses yet!</td>
+						<td colspan="4">No expenses yet!</td>
 					</tr>
 				</tbody>
 				<tfoot>
 					<tr id="summary">
 						<th colspan="2">Total Spent</th>
-						<th id="total"></th>
+						<th id="total" colspan="2"></th>
 					</tr>
 				</tfoot>
 			</table>
