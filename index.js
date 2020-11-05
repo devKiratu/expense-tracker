@@ -10,22 +10,18 @@ let summary = [];
 let sum = 0.0;
 
 // data input validation
-//date validation
-// const today = new Date();
-// console.log(today);
-// console.log(
-// 	`${today.getFullYear()}-${today.getMonth() + 1}-0${today.getDate()}`
-// );
-// purchaseDate.addEventListener("input", () => {
-// 	console.log(purchaseDate.value.toLocaleDateString());
-// 	if (
-// 		purchaseDate.value >
-// 		`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
-// 	) {
-// 		alert("Date must not be greater than today");
-// 		purchaseDate.value = "";
-// 	}
-// });
+//date validation - you can't enter a future date
+const today = new Date();
+let year = today.getFullYear();
+let month =
+	today.getMonth() + 1 < 10
+		? `0${(today.getMonth() + 1).toString()}`
+		: today.getMonth() + 1;
+let day =
+	today.getDate() < 10 ? `0${today.getDate().toString()}` : today.getDate();
+let maxDate = `${year}-${month}-${day}`;
+
+purchaseDate.setAttribute("max", maxDate);
 
 //validating for amount
 const regex = /\d+(\.\d{2})?/;
@@ -37,26 +33,23 @@ purchasePrice.addEventListener("input", () => {
 
 function addExpense(e) {
 	e.preventDefault(); // keep page from refreshing
-	console.log(purchaseDate.value);
 
 	//create an array to store all amounts to be used to calculate total amount
 	let cleanedValue;
 	if (purchasePrice.value != "") {
 		cleanedValue = parseFloat(purchasePrice.value).toFixed(2);
-		// console.log(typeof cleanedValue);
 		summary.push(parseFloat(cleanedValue));
 		sum = summary.reduce((acc, val) => acc + val, 0).toFixed(2);
 	}
-	// console.log(summary);
 
 	//collect data entered by user
 	let name = document.createTextNode(expenseName.value);
-	let date = document.createTextNode(purchaseDate.value);
+	let date = document.createTextNode(
+		purchaseDate.value.split("-").reverse().join("/")
+	);
 	let amount = document.createTextNode(
 		parseFloat(purchasePrice.value).toFixed(2)
 	);
-	// console.log(name, date, amount);
-	// console.log(typeof cleanedValue);
 
 	//create table row
 	let tableRow = document.createElement("tr");
@@ -84,6 +77,7 @@ function addExpense(e) {
 	table.appendChild(tableRow);
 	totalCol.innerHTML = sum;
 
+	//clear all input after appending values to table
 	expenseName.value = "";
 	purchaseDate.value = "";
 	purchasePrice.value = "";
@@ -96,14 +90,11 @@ function addExpense(e) {
 			noExpenses.hidden = false;
 		}
 	}
-	// console.log(summary);
 
 	removeBtn.addEventListener("click", (e) => {
 		e.preventDefault();
 		let amountToDelete = parseFloat(amountCol.textContent);
-		// console.log(amountToDelete);
 		summary.splice(summary.indexOf(amountToDelete), 1);
-		// console.log(summary);
 		sum = (sum - amountToDelete).toFixed(2);
 		table.removeChild(tableRow);
 		totalCol.innerHTML = sum;
